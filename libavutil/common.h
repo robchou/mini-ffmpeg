@@ -42,6 +42,7 @@ typedef unsigned long long uint64_t;
 #define INT64_MAX int64_t_C(9223372036854775807)
 #endif
 
+#if 0
 static int strcasecmp(char *s1, const char *s2)
 {
     while (toupper((unsigned char) *s1) == toupper((unsigned char) *s2++))
@@ -50,6 +51,12 @@ static int strcasecmp(char *s1, const char *s2)
 
     return (toupper((unsigned char) *s1) - toupper((unsigned char) *--s2));
 }
+#endif
+
+#ifdef _MSC_VER
+#define strcasecmp stricmp
+#define strncasecmp  strnicmp
+#endif
 
 static inline int clip(int a, int amin, int amax)
 {

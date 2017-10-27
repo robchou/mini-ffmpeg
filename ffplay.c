@@ -8,19 +8,22 @@
 #else
 #include <fcntl.h>
 #include <sys/time.h>
+#include <unistd.h>
 #endif
 
 #include <time.h>
 
 #include <math.h>
-#include <SDL.h>
-#include <SDL_thread.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_thread.h>
 
 #ifdef CONFIG_WIN32
 #undef main // We don't want SDL to override our main()
+#else
+#undef main // We don't want SDL to override our main()
 #endif
 
-#pragma comment(lib, "SDL.lib")
+/*#pragma comment(lib, "SDL.lib")*/
 
 #define FF_QUIT_EVENT   (SDL_USEREVENT + 2)
 
@@ -244,8 +247,13 @@ static int video_display(VideoState *is, AVFrame *src_frame, double pts)
     {
         SDL_Rect rect;
 
-        if (pts)
+        if (pts) {
+#ifdef CONFIG_WIN32
             Sleep((int)(is->frame_last_delay *1000));
+#else
+            sleep((int)(is->frame_last_delay *1000));
+#endif
+        }
 #if 1
         /* get a pointer on the bitmap */
         SDL_LockYUVOverlay(vp->bmp);
@@ -721,7 +729,8 @@ int main(int argc, char **argv)
 
     av_register_all();
 
-    input_filename = "d:/yuv/clocktxt_320.avi";
+    /*input_filename = "d:/yuv/clocktxt_320.avi";*/
+    input_filename = "../CLOCKTXT_320.avi";
 //    input_filename = "d:/yuv/clocktxt.avi";
 
     if (SDL_Init(flags))
