@@ -182,7 +182,7 @@ static int packet_queue_get(PacketQueue *q, AVPacket *pkt, int block)
     {
         if (q->abort_request)
         {
-            ret =  - 1; // Òì³£
+            ret =  - 1; // å¼‚å¸¸
             break;
         }
 
@@ -198,9 +198,9 @@ static int packet_queue_get(PacketQueue *q, AVPacket *pkt, int block)
             ret = 1;
             break;
         }
-        else if (!block)// ×èÈû±ê¼Ç£¬1(×èÈûÄ£Ê½)£¬0(·Ç×èÈûÄ£Ê½)
+        else if (!block)// é˜»å¡æ ‡è®°ï¼Œ1(é˜»å¡æ¨¡å¼)ï¼Œ0(éé˜»å¡æ¨¡å¼)
         {
-            ret = 0; // ·Ç×èÈûÄ£Ê½£¬Ã»¶«Î÷Ö±½Ó·µ»Ø0
+            ret = 0; // éé˜»å¡æ¨¡å¼ï¼Œæ²¡ä¸œè¥¿ç›´æ¥è¿”å›0
             break;
         }
         else
@@ -536,7 +536,7 @@ static int decode_thread(void *arg)
 
             screen = SDL_SetVideoMode(enc->width, enc->height, 0, flags);
 
-            SDL_WM_SetCaption("FFplay", "FFplay"); // ĞŞ¸ÄÊÇÎªÁËÊÊÅäÊÓÆµ´óĞ¡
+            SDL_WM_SetCaption("FFplay", "FFplay"); // ä¿®æ”¹æ˜¯ä¸ºäº†é€‚é…è§†é¢‘å¤§å°
 
 //          schedule_refresh(is, 40);
             break;
