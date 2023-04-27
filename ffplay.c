@@ -730,7 +730,7 @@ int main(int argc, char **argv)
     av_register_all();
 
     /*input_filename = "d:/yuv/clocktxt_320.avi";*/
-    input_filename = "../CLOCKTXT_320.avi";
+    input_filename = "CLOCKTXT_320.avi";
 //    input_filename = "d:/yuv/clocktxt.avi";
 
     if (SDL_Init(flags))
