@@ -122,7 +122,7 @@ typedef struct AVStream
 
     void *priv_data;       // AVIStream
 
-    AVRational time_base; // ÓÉ av_set_pts_info()º¯Êı³õÊ¼»¯
+    AVRational time_base; // ç”± av_set_pts_info()å‡½æ•°åˆå§‹åŒ–
 
     AVIndexEntry *index_entries; // only used if the format does not support seeking natively
     int nb_index_entries;
@@ -150,7 +150,7 @@ typedef struct AVInputFormat
 
     int(*read_close)(struct AVFormatContext*);
 
-    const char *extensions;     // ÎÄ¼şÀ©Õ¹Ãû
+    const char *extensions;     // æ–‡ä»¶æ‰©å±•å
 
     struct AVInputFormat *next;
 

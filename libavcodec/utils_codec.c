@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <stdint.h>
 #include "avcodec.h"
 #include "dsputil.h"
 

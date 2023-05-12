@@ -60,8 +60,8 @@ typedef struct AVCodecContext
     int bit_rate;
     int frame_number; // audio or video frame number
 
-    unsigned char *extradata; // CodecµÄË½ÓĞÊı¾İ£¬¶ÔAudioÊÇWAVEFORMATEX½á¹¹À©Õ¹×Ö½Ú¡£
-    int extradata_size; // ¶ÔVideoÊÇBITMAPINFOHEADERºóµÄÀ©Õ¹×Ö½Ú
+    unsigned char *extradata; // Codecçš„ç§æœ‰æ•°æ®ï¼Œå¯¹Audioæ˜¯WAVEFORMATEXç»“æ„æ‰©å±•å­—èŠ‚ã€‚
+    int extradata_size; // å¯¹Videoæ˜¯BITMAPINFOHEADERåçš„æ‰©å±•å­—èŠ‚
 
     int width, height;
 

@@ -208,7 +208,7 @@ int av_add_index_entry(AVStream *st, int64_t pos, int64_t timestamp, int size, i
     AVIndexEntry *entries,  *ie;
     int index;
 
-    if ((unsigned)st->nb_index_entries + 1 >= UINT_MAX / sizeof(AVIndexEntry)) // 越界判断
+    if ((unsigned)st->nb_index_entries + 1 >= UINT_MAX / sizeof(AVIndexEntry)) // 瓒婄晫鍒ゆ柇
         return  - 1;
 
     entries = av_fast_realloc(st->index_entries, &st->index_entries_allocated_size, 
@@ -220,13 +220,13 @@ int av_add_index_entry(AVStream *st, int64_t pos, int64_t timestamp, int size, i
 
     index = av_index_search_timestamp(st, timestamp, AVSEEK_FLAG_ANY);
 
-    if (index < 0)	// 后续
+    if (index < 0)	// 鍚庣画
     {
         index = st->nb_index_entries++;
         ie = &entries[index];
         assert(index == 0 || ie[ - 1].timestamp < timestamp);
     }
-    else			// 中插
+    else			// 涓彃
     {
         ie = &entries[index];
         if (ie->timestamp != timestamp)
@@ -259,7 +259,7 @@ int av_index_search_timestamp(AVStream *st, int64_t wanted_timestamp, int flags)
     a =  - 1;
     b = nb_entries;
 
-    while (b - a > 1) //并没有记录idx值，采用的是折半查找
+    while (b - a > 1) //骞舵病鏈夎褰昳dx鍊硷紝閲囩敤鐨勬槸鎶樺崐鏌ユ壘
     {
         m = (a + b) >> 1;
         timestamp = entries[m].timestamp;

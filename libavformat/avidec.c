@@ -35,11 +35,11 @@ typedef struct
 
 typedef struct
 {
-    int64_t riff_end;    // RIFF¿é´óÐ¡
+    int64_t riff_end;    // RIFFå—å¤§å°
     int64_t movi_list;   
     int64_t movi_end;    
     int non_interleaved;
-    int stream_index_2;  // ÎªÁËºÍAVPacketÖÐµÄstream_indexÏàÇø±ð
+    int stream_index_2;  // ä¸ºäº†å’ŒAVPacketä¸­çš„stream_indexç›¸åŒºåˆ«
 } AVIContext;
 
 typedef struct
@@ -163,7 +163,7 @@ static int avi_read_header(AVFormatContext *s, AVFormatParameters *ap)
                 else
                     avi->movi_end = url_fsize(pb);
 
-                goto end_of_header; // ¶Áµ½Êý¾Ý¶Î¾ÍÈÏÎªÎÄ¼þÍ·½áÊøÁË£¬¾Ígoto
+                goto end_of_header; // è¯»åˆ°æ•°æ®æ®µå°±è®¤ä¸ºæ–‡ä»¶å¤´ç»“æŸäº†ï¼Œå°±goto
             }
             break;
         case MKTAG('a', 'v', 'i', 'h'):  // avi header, using frame_period is bad idea
@@ -767,12 +767,12 @@ int avidec_init(void)
 }
 
 /*
-  AVIF_HASINDEX£º±êÃ÷¸ÃAVIÎÄ¼þÓÐ"idx1"¿é   
-  AVIF_MUSTUSEINDEX£º±êÃ÷±ØÐë¸ù¾ÝË÷Òý±íÀ´Ö¸¶¨Êý¾ÝË³Ðò     
-  AVIF_ISINTERLEAVED£º±êÃ÷¸ÃAVIÎÄ¼þÊÇinterleaved¸ñÊ½µÄ   
-  AVIF_WASCAPTUREFILE£º±êÃ÷¸ÃAVIÎÄ¼þÊÇÓÃ²¶×½ÊµÊ±ÊÓÆµ×¨ÃÅ·ÖÅäµÄÎÄ¼þ   
-  AVIF_COPYRIGHTED£º±êÃ÷¸ÃAVIÎÄ¼þ°üº¬ÓÐ°æÈ¨ÐÅÏ¢   
+  AVIF_HASINDEXï¼šæ ‡æ˜Žè¯¥AVIæ–‡ä»¶æœ‰"idx1"å—   
+  AVIF_MUSTUSEINDEXï¼šæ ‡æ˜Žå¿…é¡»æ ¹æ®ç´¢å¼•è¡¨æ¥æŒ‡å®šæ•°æ®é¡ºåº     
+  AVIF_ISINTERLEAVEDï¼šæ ‡æ˜Žè¯¥AVIæ–‡ä»¶æ˜¯interleavedæ ¼å¼çš„   
+  AVIF_WASCAPTUREFILEï¼šæ ‡æ˜Žè¯¥AVIæ–‡ä»¶æ˜¯ç”¨æ•æ‰å®žæ—¶è§†é¢‘ä¸“é—¨åˆ†é…çš„æ–‡ä»¶   
+  AVIF_COPYRIGHTEDï¼šæ ‡æ˜Žè¯¥AVIæ–‡ä»¶åŒ…å«æœ‰ç‰ˆæƒä¿¡æ¯   
 
-  AVIF_MUSTUSEINDEX : ±íÃ÷Ó¦ÓÃ³ÌÐòÐèÒªÊ¹ÓÃindex£¬¶ø²»ÊÇÎïÀíÉÏµÄË³Ðò£¬À´¶¨ÒåÊý¾ÝµÄÕ¹ÏÖË³Ðò¡£
-                       ÀýÈç£¬¸Ã±êÖ¾¿ÉÒÔÓÃÓÚ´´½¨Ò»¸ö±à¼­ÓÃµÄÖ¡ÁÐ±í¡£
+  AVIF_MUSTUSEINDEX : è¡¨æ˜Žåº”ç”¨ç¨‹åºéœ€è¦ä½¿ç”¨indexï¼Œè€Œä¸æ˜¯ç‰©ç†ä¸Šçš„é¡ºåºï¼Œæ¥å®šä¹‰æ•°æ®çš„å±•çŽ°é¡ºåºã€‚
+                       ä¾‹å¦‚ï¼Œè¯¥æ ‡å¿—å¯ä»¥ç”¨äºŽåˆ›å»ºä¸€ä¸ªç¼–è¾‘ç”¨çš„å¸§åˆ—è¡¨ã€‚
 // */
