@@ -251,7 +251,7 @@ static int video_display(VideoState *is, AVFrame *src_frame, double pts)
 #ifdef CONFIG_WIN32
             Sleep((int)(is->frame_last_delay *1000));
 #else
-            sleep((int)(is->frame_last_delay *1000));
+            sleep((int)(is->frame_last_delay));
 #endif
         }
 #if 1
